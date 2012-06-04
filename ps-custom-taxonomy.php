@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: 011PS Custom Taxonomy
+Plugin Name: 011 PS Custom Taxonomy
 Plugin URI: http://wordpress.org/extend/plugins/012-ps-custom-taxonomy/
 Description: Manager Wordpress Custom Taxonomy(タクソノミーのカスタマイズ、項目の追加する)
 Author: Wang Bin (oh@prime-strategy.co.jp)
