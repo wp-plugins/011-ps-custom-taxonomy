@@ -1,5 +1,5 @@
 ﻿=== 011 Ps Custom Taxonomy ===
-Contributors: wangbin
+Contributors: ouhinit
 Tags: category, tag, taxonomy, custom taxonomy
 Requires at least: 1.0
 Tested up to: 3.3.2
@@ -20,8 +20,8 @@ Tested up to: 3.3.2
 
 == Installation ==
 
-1. pluginsフォルダに、ダウンロードした PS Taxonomy Expander のフォルダをアップロードしてください。
+1. pluginsフォルダに、ダウンロードした 011 Ps Custom Taxonomy のフォルダをアップロードしてください。
 2. サンプルファイル（_config.php）より、追加項目を設定し、config.phpにリネームしてください。
-3. プラグイン一覧から"011PS Custom Taxonomy"というプラグインを有効する。
+3. プラグイン一覧から"011 PS Custom Taxonomy"というプラグインを有効する。
 
 == Changelog ==

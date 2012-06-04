@@ -1,5 +1,5 @@
 ===011 Ps Custom Taxonomy ===
-Contributors: wangbin
+Contributors: ouhinit
 Tags: category, tag, taxonomy, custom taxonomy
 Requires at least: 1.0
 Tested up to: 3.3.2
@@ -20,7 +20,7 @@ text,textarea,checkbox,radio,select of custom items.
 
 == Installation ==
 
-1. Upload the PS Taxonomy Expander folder to the plugins directory in your WordPress installation
+1. Upload the 011 Ps Custom Taxonomy folder to the plugins directory in your WordPress installation
 2. You can Sample file from (_config.php), to add the items you added.rename to config.php the _config.php
 3. Go to plugins list and activate "011PS Custom Taxonomy". 
 
