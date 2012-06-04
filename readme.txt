@@ -1,4 +1,4 @@
-===001 Ps Custom Taxonomy ===
+===011 Ps Custom Taxonomy ===
 Contributors: wangbin
 Tags: category, tag, taxonomy, custom taxonomy
 Requires at least: 1.0
