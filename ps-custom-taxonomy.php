@@ -62,7 +62,16 @@ class Ps_Custom_Taxonomy{
 	    	return;
 	    }
 	    
-	    include_once ( CUSTOM_TAXONOMY_DIR . '/config/config.php' );
+		if ( is_multisite( ) ){
+	    	global $blog_id;
+	    	if ( file_exists( CUSTOM_TAXONOMY_DIR . '/config/config-'.$blog_id.'.php' ) ){
+	    		include_once ( CUSTOM_TAXONOMY_DIR . '/config/config-'.$blog_id.'.php' );	
+	    	}else{
+	    		include_once ( CUSTOM_TAXONOMY_DIR . '/config/config.php' );
+	    	}
+		}else{
+	    	include_once ( CUSTOM_TAXONOMY_DIR . '/config/config.php' );
+		}
 
 	    $this->Start( );
 
