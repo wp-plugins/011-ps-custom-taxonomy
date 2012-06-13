@@ -25,3 +25,6 @@ Tested up to: 3.3.2
 3. プラグイン一覧から"011 PS Custom Taxonomy"というプラグインを有効する。
 
 == Changelog ==
+= Version 1.2 (13-06-2012) =
+* FIXED: クイック編集の不具合修正
+

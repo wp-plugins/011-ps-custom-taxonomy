@@ -25,4 +25,6 @@ text,textarea,checkbox,radio,select of custom items.
 3. Go to plugins list and activate "011PS Custom Taxonomy". 
 
 == Changelog ==
+= Version 1.2 (13-06-2012) =
+* FIXED: Quick Edit bug fixed
 

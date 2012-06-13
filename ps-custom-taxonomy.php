@@ -4,7 +4,7 @@ Plugin Name: 011 PS Custom Taxonomy
 Plugin URI: http://wordpress.org/extend/plugins/011-ps-custom-taxonomy/
 Description: Manager Wordpress Custom Taxonomy(タクソノミーのカスタマイズ、項目の追加する)
 Author: Wang Bin (oh@prime-strategy.co.jp)
-Version: 1.1
+Version: 1.2
 Author URI: http://www.prime-strategy.co.jp/about/staff/oh/
 */
 
@@ -137,13 +137,16 @@ class Ps_Custom_Taxonomy{
 	*/
 	function admin_custom_taxonomy_add( $taxonomy ){
 		
-		foreach ( $this->_items as $key => $field ):
-		
-			$func = 'make_' . $field['type'];
-				
-			$this->$func($taxonomy, $key , null );	
-				
-		endforeach;
+		if ( $this->_items ):
+			foreach ( $this->_items as $key => $field ):
+			
+				$func = 'make_' . $field['type'];
+					
+				$this->$func($taxonomy, $key , null );	
+					
+			endforeach;
+			$this->make_hidden_taxonomy_verify_key( );
+		endif;
 		
 	}
 	
@@ -156,20 +159,34 @@ class Ps_Custom_Taxonomy{
 	* @return
 	*/
 	function admin_custom_taxonomy_edit( $taxonomy ){
-		
-		foreach ( $this->_items as $key => $field ):
-		
-			$func = 'make_' . $field['type'];
+		if ( $this->_items ):
+			foreach ( $this->_items as $key => $field ):
 			
-			$value = get_option( $taxonomy->taxonomy . '-' . $key );
-			
-			$term_id = $taxonomy->term_id;
-			
-			$this->$func( $taxonomy->taxonomy, $key , $value[$term_id] , true );	
+				$func = 'make_' . $field['type'];
 				
-		endforeach;
+				$value = get_option( $taxonomy->taxonomy . '-' . $key );
+				
+				$term_id = $taxonomy->term_id;
+				
+				$this->$func( $taxonomy->taxonomy, $key , $value[$term_id] , true );	
+					
+			endforeach;
+			$this->make_hidden_taxonomy_verify_key( );
+		endif;
 	}
 	
+	/**
+	* ファンクション名：admin_custom_taxonomy_edit
+	* 機能概要：タクソノミーを編集する場合、カスタマイズ項目を表示する
+	* 作成：プライム・ストラテジー株式会社 王 濱
+	* 変更：
+	* @param string $taxonomy(category)
+	* @return
+	*/
+	function make_hidden_taxonomy_verify_key(  ){
+		$hidden = '<div><input type="hidden" name="taxonomy-verify-key" id="taxonomy-verify-key" value="'. wp_create_nonce('taxonomy_verify_key') .'" /></div>';
+		echo $hidden;	
+	}
 	/**
 	* ファンクション名：make_textfield
 	* 機能概要：textfieldの項目を作成
@@ -412,7 +429,10 @@ class Ps_Custom_Taxonomy{
 	* @return なし
 	*/
 	function update_taxonomy_item( $term_id ){
-
+		$nonce = isset($_REQUEST['taxonomy-verify-key']) ? $_REQUEST['taxonomy-verify-key']: '';
+	    if (!wp_verify_nonce($nonce, 'taxonomy_verify_key')) {
+       		return false;
+		}
 		foreach ( $this->_items as $key => $val ):
 
 			if ( is_array( $val['taxonomy']) && in_array( $_POST['taxonomy'] , $val['taxonomy'] ) ):
