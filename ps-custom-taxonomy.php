@@ -100,6 +100,8 @@ class Ps_Custom_Taxonomy{
 			
 			add_action( 'admin_print_styles-edit-tags.php'					, array( &$this, 'add_admin_footer_scripts' ) );
 			
+			//選択カテゴリをTOPにしない、カテゴリ一覧のソートを維持
+			add_filter( 'wp_terms_checklist_args', array(&$this,'ps_wp_terms_checklist_args' ),10,2);
 		}else{
 			add_filter( 'get_terms' 									, array( &$this, 'ps_custom_taxonomy_terms') , 10 , 3);
 			add_filter( 'get_the_terms' 								, array( &$this, 'ps_custom_taxonomy_the_terms') , 10 , 3);
@@ -614,6 +616,22 @@ class Ps_Custom_Taxonomy{
 
 	}
 	
+     /** 
+     * ファンクション名：ps_wp_terms_checklist_args
+     * 機能概要：選択カテゴリをTOPにしない、カテゴリ一覧のソートを維持
+     * 作成：プライム・ストラテジー株式会社 王 濱
+     * 変更：
+     * @param なし
+     * @return  なし
+     */
+    function ps_wp_terms_checklist_args( $args, $post_id  ){
+    	if ( $args['checked_ontop'] !== false ){
+   			$args['checked_ontop'] = false;
+    	}
+    	return $args;
+    	 	
+    }
+    
 	/**
 	* ファンクション名：custom_taxonomy_admin_notices
 	* 機能概要：設定ファイルなし、警告メッセージ
