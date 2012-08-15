@@ -40,7 +40,7 @@
 				'taxonomy' 		=> array('category','post_tag','sample-category'),//カスタムのタクソノミー
 				'type' 			=> 'checkbox',//表示htmlタグの種類(textfield,checkbox,radio,select,textarea)fileが対象外です。
 				'values' 		=> array('checkbox_value1','checkbox_value2','checkbox_value3','checkbox_value4' ),//checkbox,radioの項目データ
-				'chekked' 		=> array('checkbox_value2','checkbox_value4'),//デフォルトのチェック
+				'checked' 		=> array('checkbox_value2','checkbox_value4'),//デフォルトのチェック
 				'disply' 		=> false,//一覧に表示するかどうか
 				'description'	=> '',//<p class="description"></p>//補足説明
 			),
@@ -50,7 +50,7 @@
 				'taxonomy' 		=> array('category','post_tag','sample-category'),//カスタムのタクソノミー
 				'type' 			=> 'radio',//表示htmlタグの種類(textfield,checkbox,radio,select,textarea)fileが対象外です。
 				'values' 		=> array('radio_value1','radio_value2','radio_value3','radio_value4' ),//checkbox,radioの項目データ
-				'chekked' 		=> 'radio_value3',//デフォルトのチェック
+				'checked' 		=> 'radio_value3',//デフォルトのチェック
 				'disply' 		=> false,//一覧に表示するかどうか
 				'description'	=> '',//<p class="description"></p>//補足説明
 			),

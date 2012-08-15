@@ -294,7 +294,7 @@ class Ps_Custom_Taxonomy{
 				<div class="form-field">
 					<label for="<?php echo $taxonomy . '-' . $key ?>"><?php echo $field['name']; ?></label>
 				<?php foreach( $field['values'] as $key2 => $val):
-						$checked = ( trim($val) ==  $field['chekked'] ) ? ' checked="checked"' : ' '; ?>					
+						$checked = ( trim($val) ==  $field['checked'] ) ? ' checked="checked"' : ' '; ?>					
 						<label for="<?php echo $taxonomy . '-' . $key . '-' . $key2; ?>">
 							<input class="type_check" type="radio" name="<?php echo $key;?>" id="<?php echo $taxonomy . '-' . $key . '-' . $key2 ?>" value="<?php echo $val; ?>" <?php echo $checked; ?> />
 							<?php echo $val; ?>
@@ -343,7 +343,7 @@ class Ps_Custom_Taxonomy{
 				<label for="<?php echo $taxonomy . '-' . $key ?>"><?php echo $field['name']; ?></label>
 			<?php foreach( $field['values'] as $key2 => $val):
 					$value = (isset($value) && is_array($value)) ? $value : array($value);
-					$checked = ( is_array($field['chekked']) && in_array(trim($val), $field['chekked'] ) ) ? ' checked="checked"' : ' '; ?>					
+					$checked = ( is_array($field['checked']) && in_array(trim($val), $field['checked'] ) ) ? ' checked="checked"' : ' '; ?>					
 					<label for="<?php echo $taxonomy . '-' . $key . '-' . $key2; ?>">
 						<input class="type_check" type="checkbox" name="<?php echo $key;?>[]" id="<?php echo $taxonomy . '-' . $key . '-' . $key2 ?>" value="<?php echo $val; ?>" <?php echo $checked; ?> />
 						<?php echo $val; ?>
