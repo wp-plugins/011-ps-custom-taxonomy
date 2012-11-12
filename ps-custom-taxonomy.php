@@ -4,7 +4,7 @@ Plugin Name: 011 PS Custom Taxonomy
 Plugin URI: http://wordpress.org/extend/plugins/011-ps-custom-taxonomy/
 Description: Manager Wordpress Custom Taxonomy(タクソノミーのカスタマイズ、項目の追加する)
 Author: Wang Bin (oh@prime-strategy.co.jp)
-Version: 1.2
+Version: 1.3
 Author URI: http://www.prime-strategy.co.jp/about/staff/oh/
 */
 
@@ -126,6 +126,10 @@ class Ps_Custom_Taxonomy{
 		wp_register_style( 'prefix-style-' . __CLASS__ , plugins_url('css/prefix-style.css', __FILE__) );
 		
 		wp_enqueue_style( 'prefix-style-' . __CLASS__ );
+
+		wp_enqueue_script( 'prefix-js-' . strtolower(__CLASS__) , plugins_url('js/prefix-js.js', __FILE__) ,  array( 'jquery' ) );
+		//JS 
+
 		
 	}
 
@@ -489,7 +493,7 @@ class Ps_Custom_Taxonomy{
 		foreach ( $columns as $key => $column ):
 			if ( $key == 'posts' ):
 				foreach ( $this->_items as $key2 => $val):
-					if ( is_array( $val['taxonomy'] ) && in_array( $_GET['taxonomy'], $val['taxonomy'] ) && $val['disply'] ):
+					if ( is_array( $val['taxonomy'] ) && in_array( $_GET['taxonomy'], $val['taxonomy'] ) && ( $val['disply'] || $val['display'] )):
 						$sort_columns[$key2] = $val['name'];
 					endif;
 				endforeach;
@@ -516,7 +520,7 @@ class Ps_Custom_Taxonomy{
 	function display_custom_taxonomy_column( $output, $column_name, $term_id ){
 
 		foreach ( $this->_items as $key => $val):
-			if ( is_array( $val['taxonomy'] ) && in_array( $_GET['taxonomy'], $val['taxonomy'] ) && $val['disply'] && $column_name == $key ):
+			if ( is_array( $val['taxonomy'] ) && in_array( $_GET['taxonomy'], $val['taxonomy'] ) && ( $val['disply'] || $val['display']) && $column_name == $key ):
 				$current_option = get_option( $_GET['taxonomy'] . '-' . $key );
 				
 				$current_option[$term_id] = ( is_array( $current_option[$term_id] ) ) ? join(',',$current_option[$term_id] ) : $current_option[$term_id] ;
@@ -577,6 +581,10 @@ class Ps_Custom_Taxonomy{
 				$current_option[$key] = get_option( $taxonomy . '-' . $key);
 			endif;
 		endforeach;
+		
+		if ( ! $terms ){
+			return $terms;
+		}
 		
 		foreach ( $terms as $key => $term ):
 			foreach ( $this->_items as $key2 => $val):
