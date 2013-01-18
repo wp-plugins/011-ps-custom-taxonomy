@@ -28,3 +28,6 @@ text,textarea,checkbox,radio,select of custom items.
 = Version 1.2 (13-06-2012) =
 * FIXED: Quick Edit bug fixed
 
+
+== Screenshots ==
+1. add category.
